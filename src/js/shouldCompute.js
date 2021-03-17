@@ -8,19 +8,22 @@ export default function autorunExample() {
     debit: 2,
   });
 
-  var divisor = computed(() => {
-    return bankUser.income / bankUser.debit;
-  });
+  // var divisor = computed(() => {
+  //   return bankUser.income / bankUser.debit;
+  // });
 
-  var indication = computed(() => {
-    return divisor / (bankUser.income + 1);
-  });
+  // var indication = computed(() => {
+  //   return divisor / (bankUser.income + 1);
+  // });
 
+  /**
+   * Example1: autorun on direct observable changes.
+   */
   autorun(() => {
-    pointsLabel.innerText = `[${divisor}] points [${indication}] indications`;
+    pointsLabel.innerText = `${bankUser.income} Income`;
   });
 
   addBtn.addEventListener("click", () => {
-    bankUser.debit++;
+    bankUser.income++;
   });
 }
